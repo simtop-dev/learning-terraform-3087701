@@ -62,22 +62,17 @@ module "alb" {
       protocol         = "HTTP"
       port             = 80
       target_type      = "instance"
-      targets = {
-        my_target = {
-          target_id = aws_instance.blog.id
-          port = 80
         }
       }
-    }
   ]
 
-#  http_tcp_listeners = [
-#    {
-#     port               = 80
-#     protocol           = "HTTP"
-#    target_group_index = 0
-#   }
-#  ]
+  http_tcp_listeners = [
+    {
+      port               = 80
+      protocol           = "HTTP"
+     target_group_index = 0
+    }
+  ]
 
   tags = {
     Environment = "dev"
@@ -92,7 +87,6 @@ module "blog_sg" {
   name = "blog"
   ingress_rules       = ["http-80-tcp","https-443-tcp"]
   ingress_cidr_blocks = ["0.0.0.0/0"]
-  
   egress_rules       = ["all-all"]
   egress_cidr_blocks = ["0.0.0.0/0"]
 }
