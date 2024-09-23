@@ -62,10 +62,16 @@ module "blog_alb" {
       backend_protocol  = "HTTP"
       backend_port      = 80
       target_type       = "instance" 
+      targets = {
+        my_targets = {
+          target_id = aws_instance.blog.id
+          port = 80
+        }
+      }
     }
   ]
 
-  listeners = [
+  http_tcp_listeners = [
     {
       port               = 80
       protocol           = "HTTP"
