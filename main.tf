@@ -69,12 +69,11 @@ listeners = {
       target_type       = "instance" 
       target_id         = aws_instance.blog.id
         }
-      }
-      
+}
+
 tags = {
     Environment = "dev"
   }
-}
 
 module "blog_sg" {
   source  = "terraform-aws-modules/security-group/aws"
