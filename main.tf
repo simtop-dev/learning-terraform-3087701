@@ -62,8 +62,8 @@ module "alb" {
       protocol         = "HTTP"
       port             = 80
       target_type      = "instance"
-        }
-      }
+        
+    }
   ]
 
   http_tcp_listeners = [
